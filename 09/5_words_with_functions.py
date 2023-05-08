@@ -9,18 +9,26 @@ list2 = ["l", "e", "m", "o", "n"]
 list3 = ["p", "e", "a", "r"]
 list4 = ["p", "l", "u", "m"]
 list5 = ["p", "e", "a", "c", "h"]
+totalscore = 0
 
 
 def guessing_word(word, index):
+    global totalscore
     print("OK, here is the word: ", word)
     guess = input("Please type the word: ")
     if guess.lower() == list_words[index]:
         print("Congratulations! You score 20 points!")
+        score = 20
+        totalscore = totalscore + score
     else:
         print("Unfortunately, that's a wrong guess. Better luck next time!")
+        score = 0
+        totalscore = totalscore + score
+    return score
 
 
 def guessing_by_letters(word, list_index, list):
+    global totalscore
     print("OK, here is the word: ", word)
     flag = 0
     while word != list_words[list_index]:
@@ -38,6 +46,8 @@ def guessing_by_letters(word, list_index, list):
                 break
         if word == list_words[list_index]:
             print("Congratulations! You score 10 points!")
+            score = 10
+            totalscore = totalscore + score
 
 
 start = input("I've got five names of fruit for you to guess. Do you want to play? Type Yes or No: ")
@@ -110,6 +120,7 @@ elif start.lower() == "yes":  # choose to guess a word or letters
                         guessing_word(word5, 4)
                     if decision.lower() == "l":
                         guessing_by_letters(word5, 4, list5)
+print("Your total score is:", totalscore)
 
 
 
